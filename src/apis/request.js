@@ -1,4 +1,5 @@
 const API_END_POINT = 'https://kdt-frontend.programmers.co.kr';
+const USERNAME = 'bbearcookie';
 
 export const request = async (url, options = {}) => {
   try {
@@ -6,11 +7,13 @@ export const request = async (url, options = {}) => {
       ...options,
       headers: {
         ...options.headers,
-        'x-username': 'bbearcookie',
+        'x-username': USERNAME,
         'Content-Type': 'application/json',
       },
     });
+
     if (!res.ok) throw new Error('서버에 대한 요청이 실패했습니다.');
+
     return await res.json();
   } catch (err) {
     console.error(err);
